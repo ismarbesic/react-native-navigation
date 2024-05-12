@@ -22,6 +22,8 @@
         ![navigationController.viewControllers containsObject:_presentedViewController]) {
         _isPopping = YES;
     }
+
+    [navigationController.tabBarController setTabBarVisibilityForViewController:viewController];
 }
 
 - (void)navigationController:(UINavigationController *)navigationController

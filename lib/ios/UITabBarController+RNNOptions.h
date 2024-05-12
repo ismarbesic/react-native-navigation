@@ -20,4 +20,6 @@
 
 - (void)hideTabBar:(BOOL)animated;
 
+- (void)setTabBarVisibilityForViewController:(UIViewController *)viewController;
+
 @end

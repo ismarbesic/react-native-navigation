@@ -160,6 +160,26 @@
     }
 }
 
+- (void)setTabBarVisibilityForViewController:(UIViewController *)viewController {
+    BOOL isTabBarVisible = [viewController.stack.resolveOptions.bottomTabs.visible withDefault:YES];
+    int screenHeight = [UIScreen mainScreen].bounds.size.height;
+    CGSize currentFrameSize = self.tabBar.frame.size;
+    int tabBarOriginY = screenHeight - (isTabBarVisible ? currentFrameSize.height : 0);
+    
+    if (isTabBarVisible) {
+        self.tabBar.hidden = NO;
+    }
+    
+    [UIView animateWithDuration:0.15
+                          delay:0
+                        options:UIViewAnimationCurveEaseOut
+                     animations:^{
+        self.tabBar.frame = CGRectMake(0, tabBarOriginY, currentFrameSize.width, currentFrameSize.height);
+    } completion:^(BOOL finished) {
+        self.tabBar.hidden = !isTabBarVisible;
+    }];
+}
+
 #pragma mark UITabBarControllerDelegate
 
 - (void)tabBarController:(UITabBarController *)tabBarController

@@ -1,4 +1,5 @@
 #import "RNNEventEmitter.h"
+#import "UITabBarController+RNNOptions.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
