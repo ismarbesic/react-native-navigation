@@ -157,7 +157,10 @@
         (RNNNavigationOptions *)[self.boundViewController.topMostViewController.resolveOptions
             withDefault:self.defaultOptions];
 
-    if ([withDefault.bottomTabs.animate withDefault:NO]) {
+    BOOL animateBottomTabs = [withDefault.bottomTabs.animate withDefault:NO];
+    BOOL hasCustomPushContentAnimation = [withDefault.animations.push.content hasAnimation];
+    
+    if (animateBottomTabs && hasCustomPushContentAnimation) {
         return NO;
     }
 
