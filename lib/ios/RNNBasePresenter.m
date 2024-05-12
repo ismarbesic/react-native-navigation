@@ -156,6 +156,11 @@
     RNNNavigationOptions *withDefault =
         (RNNNavigationOptions *)[self.boundViewController.topMostViewController.resolveOptions
             withDefault:self.defaultOptions];
+
+    if ([withDefault.bottomTabs.animate withDefault:NO]) {
+        return NO;
+    }
+
     return ![withDefault.bottomTabs.visible withDefault:YES];
 }
 
